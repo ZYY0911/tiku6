@@ -29,14 +29,25 @@ public class AppClient extends Application {
     }
 
     private List<SSHJ> sshjs ;
+
     public List<SSHJ> getSshjs() {
         return sshjs;
     }
-    public static  boolean isAdmin=false;
+
+    public static boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public static void setIsAdmin(boolean isAdmin) {
+        AppClient.isAdmin = isAdmin;
+    }
+
+    public static boolean isAdmin = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        sshjs=new ArrayList<>();
+        sshjs = new ArrayList<>();
         LitePal.initialize(this);
         requestQueue = Volley.newRequestQueue(this);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -53,9 +64,18 @@ public class AppClient extends Application {
     public static void addRe(JsonObjectRequest jsonObjectRequest) {
         requestQueue.add(jsonObjectRequest);
     }
-    public static void  addUser(String username){
-        preferences.edit().putString("username",username).apply();
+
+    public static void addUser(String username) {
+        preferences.edit().putString("username", username).apply();
     }
+    public static void  setOgin(boolean x){
+        preferences.edit().putBoolean("x",x).apply();
+    }
+    public  static boolean getOgin(){
+        return preferences.getBoolean("x",false);
+    }
+
+
 
     public static String getUser(){
         return preferences.getString("username","xxx");

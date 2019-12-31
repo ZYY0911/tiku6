@@ -90,6 +90,8 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.exit:
                         myClass = Q_YHZC.class;
+                        AppClient.addUser("");
+                        AppClient.setOgin(false);
                         finish();
                         break;
                 }
