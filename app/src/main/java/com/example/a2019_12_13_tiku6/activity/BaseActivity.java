@@ -20,6 +20,8 @@ import android.widget.TextView;
 import com.example.a2019_12_13_tiku6.AppClient;
 import com.example.a2019_12_13_tiku6.R;
 
+import java.util.Random;
+
 /**
  * Create by 张瀛煜 on 2019-12-31
  */
@@ -27,7 +29,14 @@ public class BaseActivity extends AppCompatActivity {
     private Thread thread;
     private boolean isLoop = true;
     private boolean isSuccess = true;
-
+    private int anm[] = {R.anim.anim_1,R.anim.anim_2,R.anim.anim_3
+            ,R.anim.anim_4,R.anim.anim_5,R.anim.anim_6,R.anim.anim_7,R.anim.anim_8};
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Random random = new Random();
+        overridePendingTransition(anm[random.nextInt(8)],anm[random.nextInt(8)]);
+    }
 
     public void setSuccess(boolean success) {
         isSuccess = success;

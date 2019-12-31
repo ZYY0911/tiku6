@@ -1,5 +1,6 @@
 package com.example.a2019_12_13_tiku6.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,7 @@ import butterknife.Unbinder;
 /**
  * Create by 张瀛煜 on 2019-12-31
  */
+@SuppressLint("ValidFragment")
 public class DLHJ_Framgent extends Fragment {
     @BindView(R.id.dl_pm)
     TextView dlPm;
@@ -47,6 +50,7 @@ public class DLHJ_Framgent extends Fragment {
     @BindView(R.id.dl_value2)
     TextView dlValue2;
     Unbinder unbinder;
+    private VolleyTo volleyTo;
     private Sense sense;
 
     @Nullable
@@ -55,6 +59,12 @@ public class DLHJ_Framgent extends Fragment {
         View view = inflater.inflate(R.layout.dlhj_fragment, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    private AppCompatActivity appCompatActivity;
+
+    public DLHJ_Framgent(AppCompatActivity compatActivity) {
+        this.appCompatActivity = compatActivity;
     }
 
     @Override
@@ -76,8 +86,9 @@ public class DLHJ_Framgent extends Fragment {
     }
 
     private void setVolley() {
-        VolleyTo volleyTo = new VolleyTo();
+        volleyTo = new VolleyTo();
         volleyTo.setUrl("get_all_sense")
+                .setDialog(appCompatActivity)
                 .setJsonObject("UserName", "user1")
                 .setLoop(true)
                 .setTime(3000)
@@ -88,8 +99,8 @@ public class DLHJ_Framgent extends Fragment {
                         sense = gson.fromJson(jsonObject.toString(), Sense.class);
                         int pm = sense.getPm25();
                         if (pm > 200) {
-                            dlTs.setText("友情提示：PM2.5大于80，不适合出行。");
-                            showNotificationView("PM2.5大于80，不适合出行。", 1);
+                            dlTs.setText("友情提示：PM2.5大于200，不适合出行。");
+                            showNotificationView("PM2.5大于200，不适合出行。", 1);
                             dlVideo.setVisibility(View.VISIBLE);
                             dlVideo.start();
                         } else {
@@ -100,15 +111,15 @@ public class DLHJ_Framgent extends Fragment {
                         if (gz > 4000) {
                             dlTs2.setText("友情提示：光照较强，出行请戴墨镜");
                             showNotificationView("光照较强，出行请戴墨镜。", 2);
-                        } else if (gz<1000) {
+                        } else if (gz < 1000) {
                             dlTs2.setText("友情提示：光照较弱，出行请开灯");
                             showNotificationView("光照较弱，出行请开灯。", 3);
                         } else {
                             dlTs2.setText("友情提示：适合出行");
                         }
-                        dlValue.setPadding((gz/10),0,0,0);
-                        dlValue2.setPadding(((gz/10)-50),0,0,0);
-                        dlValue2.setText(gz+"");
+                        dlValue.setPadding((gz / 10), 0, 0, 0);
+                        dlValue2.setPadding(((gz / 10) - 50), 0, 0, 0);
+                        dlValue2.setText(gz + "");
                     }
 
                     @Override
@@ -137,5 +148,7 @@ public class DLHJ_Framgent extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        volleyTo.setLoop(false);
+        volleyTo = null;
     }
 }

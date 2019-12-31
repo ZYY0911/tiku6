@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class Q_YHZC extends BaseActivity implements View.OnClickListener {
+public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView iv_yy;
     private EditText et_yhm;
@@ -60,6 +61,7 @@ public class Q_YHZC extends BaseActivity implements View.OnClickListener {
             bean = list.get(i);
             Log.i("222222222222", "onClick: " + list.toString());
             if (et_yhm.getText().toString().equals(bean.getYh()) && et_mm.getText().toString().equals(bean.getMima())) {
+                startActivity(new Intent(Q_YHZC.this, MainActivity.class));
                 Toast.makeText(this, "登入成功", Toast.LENGTH_SHORT).show();
                 is=false;
                 return;
@@ -116,6 +118,7 @@ public class Q_YHZC extends BaseActivity implements View.OnClickListener {
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 if (et_yhm.getText().toString().equals(jsonObject1.getString("username")) && et_mm.getText().toString().equals(jsonObject1.getString("password"))) {
                                     Toast.makeText(Q_YHZC.this, "登入成功", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(Q_YHZC.this, MainActivity.class));
                                     if (et_yhm.getText().toString().equals("user1")&&et_mm.getText().toString().equals("123456")){
                                         AppClient.isAdmin=true;
                                         AppClient.addUser(et_yhm.getText().toString());

@@ -13,8 +13,10 @@ import android.widget.TextView;
 import com.android.volley.VolleyError;
 import com.example.a2019_12_13_tiku6.activity.BaseActivity;
 import com.example.a2019_12_13_tiku6.activity.Q_GJCX;
+import com.example.a2019_12_13_tiku6.activity.Q_YHZC;
 import com.example.a2019_12_13_tiku6.activity.Z_IPSzActivity;
 import com.example.a2019_12_13_tiku6.activity.Z_TQYBActivity;
+import com.example.a2019_12_13_tiku6.activity.Z_WDJTActivity;
 import com.example.a2019_12_13_tiku6.activity.Z_YHTCActivity;
 import com.example.a2019_12_13_tiku6.bean.Sense;
 import com.example.a2019_12_13_tiku6.net.VolleyLo;
@@ -46,6 +48,7 @@ public class MainActivity extends BaseActivity {
     NavigationView navView;
     @BindView(R.id.drawer)
     DrawerLayout drawer;
+    private VolleyTo volleyTo, volleyTo1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +56,11 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
+        initClick();
         setVolley();
         setVolley_Bus();
-        initClick();
     }
+
 
     private void initView() {
         title.setText("主页面");
@@ -67,35 +71,42 @@ public class MainActivity extends BaseActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Class myClass = null;
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.setting:
                         myClass = Z_IPSzActivity.class;
                         finish();
                         break;
                     case R.id.weather:
                         myClass = Z_TQYBActivity.class;
-                        finish();
                         break;
                     case R.id.park:
                         myClass = Z_YHTCActivity.class;
-                        finish();
                         break;
                     case R.id.gjcx:
-                        myClass= Q_GJCX.class;
+                        myClass = Q_GJCX.class;
+                        break;
+                    case R.id.traffic:
+                        myClass = Z_WDJTActivity.class;
+                        break;
+                    case R.id.exit:
+                        myClass = Q_YHZC.class;
                         finish();
                         break;
                 }
-                startActivity(new Intent(MainActivity.this,myClass));
+                startActivity(new Intent(MainActivity.this, myClass));
+                drawer.closeDrawers();
                 return true;
             }
         });
     }
 
     private void setVolley_Bus() {
-        VolleyTo volleyTo = new VolleyTo();
+        volleyTo = new VolleyTo();
         volleyTo.setUrl("get_bus_stop_distance")
-                .setJsonObject("UserName","user1")
+                .setJsonObject("UserName", "user1")
                 .setDialog(this)
+                .setLoop(true)
+                .setTime(3000)
                 .setVolleyLo(new VolleyLo() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
@@ -105,8 +116,8 @@ public class MainActivity extends BaseActivity {
                         JSONObject jsonObject2 = jsonArray.optJSONObject(1);
                         JSONObject jsonObject3 = jsonArray1.optJSONObject(0);
                         JSONObject jsonObject4 = jsonArray1.optJSONObject(1);
-                        gjjlText1.setText("1号公交"+jsonObject1.optInt("distance")+"m,2号公交:"+jsonObject2.optInt("distance")+"m");
-                        gjjlText2.setText("1号公交"+jsonObject3.optInt("distance")+"m,2号公交:"+jsonObject4.optInt("distance")+"m");
+                        gjjlText1.setText("1号公交" + jsonObject1.optInt("distance") + "m,2号公交:" + jsonObject2.optInt("distance") + "m");
+                        gjjlText2.setText("1号公交" + jsonObject3.optInt("distance") + "m,2号公交:" + jsonObject4.optInt("distance") + "m");
 
                     }
 
@@ -118,16 +129,18 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setVolley() {
-        VolleyTo  volleyTo  =new VolleyTo();
-        volleyTo.setUrl("get_all_sense")
-                .setJsonObject("UserName","user1")
+        volleyTo1 = new VolleyTo();
+        volleyTo1.setUrl("get_all_sense")
+                .setJsonObject("UserName", "user1")
+                .setLoop(true)
+                .setTime(3000)
                 .setVolleyLo(new VolleyLo() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         Gson gson = new Gson();
                         Sense sense = gson.fromJson(jsonObject.toString(), Sense.class);
-                        dlhjText.setText("PM2.5:"+sense.getPm25()+"µg/m3,温度:"+sense.getTemperature()+"˚C\n湿度："
-                                +sense.getHumidity()+"˚C,CO2:"+sense.getCo2()+"µg/m3");
+                        dlhjText.setText("PM2.5:" + sense.getPm25() + "µg/m3,温度:" + sense.getTemperature() + "˚C\n湿度："
+                                + sense.getHumidity() + "˚C,CO2:" + sense.getCo2() + "µg/m3");
                     }
 
                     @Override
@@ -135,6 +148,15 @@ public class MainActivity extends BaseActivity {
 
                     }
                 }).start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        volleyTo.setLoop(false);
+        volleyTo = null;
+        volleyTo1.setLoop(false);
+        volleyTo1 = null;
     }
 
     @OnClick(R.id.change)

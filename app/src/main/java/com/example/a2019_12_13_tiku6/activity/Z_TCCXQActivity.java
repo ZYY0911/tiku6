@@ -20,7 +20,7 @@ import butterknife.OnClick;
 /**
  * Create by 张瀛煜 on 2019-12-31
  */
-public class Z_TCCXQActivity extends AppCompatActivity {
+public class Z_TCCXQActivity extends BaseActivity {
 
     @BindView(R.id.change)
     ImageView change;

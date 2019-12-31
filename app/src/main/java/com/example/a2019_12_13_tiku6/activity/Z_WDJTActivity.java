@@ -38,7 +38,7 @@ public class Z_WDJTActivity extends BaseActivity {
         setContentView(R.layout.wdjt_layout);
         ButterKnife.bind(this);
         initView();
-        replace(new WDLK_Fragment());
+        replace(new DLHJ_Framgent(this));
     }
 
     private void initView() {
@@ -62,7 +62,7 @@ public class Z_WDJTActivity extends BaseActivity {
                 tvDlhj.setTextSize(30);
                 break;
             case R.id.tv_dlhj:
-                replace(new DLHJ_Framgent());
+                replace(new DLHJ_Framgent(this));
                 tvDlhj.setTextSize(35);
                 tvWdlk.setTextSize(30);
                 break;

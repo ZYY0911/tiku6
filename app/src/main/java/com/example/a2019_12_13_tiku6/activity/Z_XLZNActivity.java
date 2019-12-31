@@ -21,7 +21,7 @@ import butterknife.OnClick;
 /**
  * Create by 张瀛煜 on 2019-12-31
  */
-public class Z_XLZNActivity extends AppCompatActivity {
+public class Z_XLZNActivity extends BaseActivity {
     @BindView(R.id.change)
     ImageView change;
     @BindView(R.id.title)

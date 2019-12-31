@@ -62,7 +62,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="28dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="10dp"
                 android:text="光照阈值上限值：4000  "
@@ -133,7 +133,7 @@
                 android:textSize="30dp"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:background="#00ff00"
+                android:background="#1BBE0D"
                 />
             <TextView
                 android:textColor="#000"
@@ -154,7 +154,7 @@
                 android:id="@+id/dl_value"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="#003cff"
+                android:background="#0C00B8"
                 />
         </LinearLayout>
         <LinearLayout

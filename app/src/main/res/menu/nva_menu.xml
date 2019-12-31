@@ -2,14 +2,40 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group
-        android:id="@+id/grp1"
+        android:id="@+id/grp3"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/weather"
-            android:icon="@mipmap/weather"
-            android:title="天气预报" />
+            android:id="@+id/traffic"
+            android:icon="@mipmap/etc_query"
+            android:title="我的交通" />
 
     </group>
+
+    <group
+        android:id="@+id/bb"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/gjcx"
+            android:icon="@android:drawable/ic_menu_set_as"
+            android:title="公交查询" />
+    </group>
+    <group
+        android:id="@+id/bba"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/grzx"
+            android:icon="@mipmap/home"
+            android:title="个人中心" />
+    </group>
+    <group
+        android:id="@+id/bba2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/lkfx"
+            android:icon="@mipmap/c"
+            android:title="路况分析" />
+    </group>
+
     <group
         android:id="@+id/grp2"
         android:checkableBehavior="single">
@@ -19,6 +45,21 @@
             android:title="用户停车" />
 
     </group>
+
+    <group
+        android:id="@+id/grp1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/weather"
+            android:icon="@mipmap/weather"
+            android:title="天气预报" />
+
+    </group>
+
+
+
+
+
 
 
     <group android:checkableBehavior="single">
@@ -36,12 +77,5 @@
             android:icon="@android:drawable/ic_menu_set_as"
             android:title="网路设置" />
     </group>
-    <group
-        android:id="@+id/bb"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/gjcx"
-            android:icon="@android:drawable/ic_menu_set_as"
-            android:title="公交查询" />
-    </group>
+
 </menu>

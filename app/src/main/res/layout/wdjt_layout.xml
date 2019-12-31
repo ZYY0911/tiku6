@@ -28,10 +28,11 @@
             android:id="@+id/tv_wdlk"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_weight="1"
             android:text="我的路况"
             android:textColor="#000"
-            android:textSize="35sp" />
+            android:textSize="30sp" />
 
 
         <TextView
@@ -40,8 +41,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="道路环境"
+            android:gravity="center"
             android:textColor="#000"
-            android:textSize="30sp" />
+            android:textSize="35sp"/>
 
     </LinearLayout>
 
