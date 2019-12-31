@@ -36,4 +36,12 @@
             android:icon="@android:drawable/ic_menu_set_as"
             android:title="网路设置" />
     </group>
+    <group
+        android:id="@+id/bb"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/gjcx"
+            android:icon="@android:drawable/ic_menu_set_as"
+            android:title="公交查询" />
+    </group>
 </menu>

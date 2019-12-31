@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.a2019_12_13_tiku6.AppClient;
 import com.example.a2019_12_13_tiku6.R;
 
 /**
@@ -30,6 +31,11 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setSuccess(boolean success) {
         isSuccess = success;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     private Dialog dialog;
@@ -70,6 +76,8 @@ public class BaseActivity extends AppCompatActivity {
         isSuccess = true;
         setNet();
         Log.e("aaaaaa", "onResume: ");
+        TextView textView = findViewById(R.id.title1);
+        textView.setText("当前用户："+AppClient.getUser());
     }
 
 

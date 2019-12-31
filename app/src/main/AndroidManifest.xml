@@ -37,7 +37,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Q_YHZC"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,10 +51,15 @@
         <activity android:name=".activity.Z_LXDTActivity"></activity>
         <activity android:name=".activity.Z_XLZNActivity"></activity>
         <activity android:name=".activity.Z_WDJTActivity"></activity>
+        <activity android:name=".activity.Q_LKFX"></activity>
+        <activity android:name=".activity.Q_GJCX"></activity>
+        <activity android:name=".activity.Q_YHZC_zh" />
+        <activity android:name=".activity.Q_YHZC_zc" />
+
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="94625aa4149ac39f410049fbe37cbf15"></meta-data>
+            android:value="94625aa4149ac39f410049fbe37cbf15" />
     </application>
 
 </manifest>

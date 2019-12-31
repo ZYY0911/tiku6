@@ -11,6 +11,10 @@ import com.example.a2019_12_13_tiku6.bean.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.a2019_12_13_tiku6.bean.SSHJ;
+
+import org.litepal.LitePal;
+
 
 /**
  * Create by 张瀛煜 on 2019-12-31
@@ -24,9 +28,16 @@ public class AppClient extends Application {
         return durations;
     }
 
+    private List<SSHJ> sshjs ;
+    public List<SSHJ> getSshjs() {
+        return sshjs;
+    }
+    public static  boolean isAdmin=false;
     @Override
     public void onCreate() {
         super.onCreate();
+        sshjs=new ArrayList<>();
+        LitePal.initialize(this);
         requestQueue = Volley.newRequestQueue(this);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
@@ -41,5 +52,12 @@ public class AppClient extends Application {
 
     public static void addRe(JsonObjectRequest jsonObjectRequest) {
         requestQueue.add(jsonObjectRequest);
+    }
+    public static void  addUser(String username){
+        preferences.edit().putString("username",username).apply();
+    }
+
+    public static String getUser(){
+        return preferences.getString("username","xxx");
     }
 }

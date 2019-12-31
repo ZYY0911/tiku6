@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.example.a2019_12_13_tiku6.activity.BaseActivity;
+import com.example.a2019_12_13_tiku6.activity.Q_GJCX;
 import com.example.a2019_12_13_tiku6.activity.Z_IPSzActivity;
 import com.example.a2019_12_13_tiku6.activity.Z_TQYBActivity;
 import com.example.a2019_12_13_tiku6.activity.Z_YHTCActivity;
@@ -77,6 +78,10 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.park:
                         myClass = Z_YHTCActivity.class;
+                        finish();
+                        break;
+                    case R.id.gjcx:
+                        myClass= Q_GJCX.class;
                         finish();
                         break;
                 }
