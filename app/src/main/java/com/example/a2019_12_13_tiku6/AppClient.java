@@ -22,6 +22,14 @@ public class AppClient extends Application {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
+    public static String getIp() {
+        return preferences.getString("IP", "10.172.176.54");
+    }
+
+    public static void setIp(String ip) {
+        preferences.edit().putString("IP", ip).apply();
+    }
+
     public static void addRe(JsonObjectRequest jsonObjectRequest) {
         requestQueue.add(jsonObjectRequest);
     }

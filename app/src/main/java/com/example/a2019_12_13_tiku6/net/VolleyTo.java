@@ -18,16 +18,17 @@ import org.json.JSONObject;
  * Create by 张瀛煜 on 2019-12-31
  */
 public class VolleyTo extends Thread {
-    private String Url = "http://10.172.176.54:8080/traffic/";
+    private String Url = "http://" + AppClient.getIp() + ":8080/traffic/";
     private boolean isLoop;
     private int time;
     private JSONObject jsonObject = new JSONObject();
     private VolleyLo volleyLo;
-    private MyDialog dialog ;
+    private MyDialog dialog;
+    private boolean is  = true;
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            if (dialog!=null&& dialog.isVisible()){
+            if (dialog != null && dialog.isVisible()) {
                 dialog.dismiss();
             }
             return false;
@@ -36,7 +37,7 @@ public class VolleyTo extends Thread {
 
     public VolleyTo setDialog(AppCompatActivity context) {
         dialog = new MyDialog();
-        dialog.show(context.getSupportFragmentManager(),"aaa");
+        dialog.show(context.getSupportFragmentManager(), "aaa");
         return this;
     }
 
@@ -62,7 +63,7 @@ public class VolleyTo extends Thread {
 
     public VolleyTo setJsonObject(String k, Object v) {
         try {
-            jsonObject.put(k,v);
+            jsonObject.put(k, v);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -78,13 +79,19 @@ public class VolleyTo extends Thread {
                 @Override
                 public void onResponse(JSONObject jsonObject) {
                     volleyLo.onResponse(jsonObject);
-                    handler.sendEmptyMessageDelayed(0,20000);
+                    if (is) {
+                        handler.sendEmptyMessageDelayed(0, 1500);
+                        is= false;
+                    }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
                     volleyLo.onErrorResponse(volleyError);
-                    handler.sendEmptyMessageDelayed(1,20000);
+                    if (is) {
+                        handler.sendEmptyMessageDelayed(0, 1500);
+                        is= false;
+                    }
                 }
             });
             AppClient.addRe(jsonObjectRequest);
@@ -93,6 +100,6 @@ public class VolleyTo extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }while (isLoop);
+        } while (isLoop);
     }
 }

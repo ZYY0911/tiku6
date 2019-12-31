@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="30dp"
+                    android:gravity="center"
+                    android:text="德州"
+                    android:textColor="#000"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/now_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="2029年12月31日  星期四"
+                    android:textColor="#000"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/today_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:gravity="center"
+                    android:text="18度    晴"
+                    android:textColor="#000"
+                    android:textSize="40sp" />
+
+                <ImageView
+                    android:id="@+id/weather_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="50dp"
+                    android:src="@mipmap/weather" />
+
+            </LinearLayout>
+
+            <GridView
+                android:id="@+id/gridView1"
+                android:layout_width="1200dp"
+                android:layout_height="300dp"
+                android:numColumns="6"></GridView>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChart"
+                android:layout_width="1200dp"
+                android:layout_height="200dp"></com.github.mikephil.charting.charts.LineChart>
+
+            <GridView
+                android:id="@+id/gridView2"
+                android:layout_width="1200dp"
+                android:layout_height="300dp"
+                android:numColumns="6"></GridView>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
