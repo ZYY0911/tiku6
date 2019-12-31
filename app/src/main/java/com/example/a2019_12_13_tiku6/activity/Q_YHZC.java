@@ -41,18 +41,20 @@ public class Q_YHZC extends BaseActivity implements View.OnClickListener {
     private Button bt_dr;
     private List<Q_YHZC_bean> list = new ArrayList<>();
     private Q_YHZC_bean bean;
-    private boolean is=true;
+    private boolean is = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_q__yhzc);
+        if (AppClient.getOgin()==true) {
+             startActivity(new Intent(Q_YHZC.this, MainActivity.class));
+            return;
+        }
         initView();
         setonclick();
         setSQL();
         pandaun();
-        if (AppClient.isAdmin){
-        startActivity(new Intent(Q_YHZC.this, MainActivity.class));
-        }
     }
 
     private void pandaun() {
@@ -61,9 +63,11 @@ public class Q_YHZC extends BaseActivity implements View.OnClickListener {
             Log.i("222222222222", "onClick: " + list.toString());
             if (et_yhm.getText().toString().equals(bean.getYh()) && et_mm.getText().toString().equals(bean.getMima())) {
                 Toast.makeText(this, "登入成功", Toast.LENGTH_SHORT).show();
-                is=false;
+                startActivity(new Intent(Q_YHZC.this, MainActivity.class));
+                is = false;
                 return;
-            }if (is==false){
+            }
+            if (is == false) {
                 Toast.makeText(this, "登入失败", Toast.LENGTH_SHORT).show();
 
             }
@@ -103,6 +107,7 @@ public class Q_YHZC extends BaseActivity implements View.OnClickListener {
             }
         });
     }
+
     private void setVolley() {
         VolleyTo volleyTo = new VolleyTo();
         volleyTo.setUrl("get_login")
@@ -116,11 +121,13 @@ public class Q_YHZC extends BaseActivity implements View.OnClickListener {
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 if (et_yhm.getText().toString().equals(jsonObject1.getString("username")) && et_mm.getText().toString().equals(jsonObject1.getString("password"))) {
                                     Toast.makeText(Q_YHZC.this, "登入成功", Toast.LENGTH_SHORT).show();
-                                    if (et_yhm.getText().toString().equals("user1")&&et_mm.getText().toString().equals("123456")){
-                                        AppClient.isAdmin=true;
+                                    if (et_yhm.getText().toString().equals("user1") && et_mm.getText().toString().equals("123456")) {
+                                       AppClient.setOgin(true);
+                                        Log.i("2222222222", "onCreate: " + AppClient.isAdmin);
                                         AppClient.addUser(et_yhm.getText().toString());
                                     }
-
+                                    startActivity(new Intent(Q_YHZC.this, MainActivity.class));
+                                    finish();
                                     return;
                                 }
                             }
