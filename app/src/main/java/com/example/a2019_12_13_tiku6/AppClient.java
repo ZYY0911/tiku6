@@ -7,6 +7,12 @@ import android.preference.PreferenceManager;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.a2019_12_13_tiku6.bean.SSHJ;
+
+import org.litepal.LitePal;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Create by 张瀛煜 on 2019-12-31
@@ -14,10 +20,16 @@ import com.android.volley.toolbox.Volley;
 public class AppClient extends Application {
     private static RequestQueue requestQueue;
     private static SharedPreferences preferences;
-
+    private List<SSHJ> sshjs ;
+    public List<SSHJ> getSshjs() {
+        return sshjs;
+    }
+    public static  boolean isAdmin=false;
     @Override
     public void onCreate() {
         super.onCreate();
+        sshjs=new ArrayList<>();
+        LitePal.initialize(this);
         requestQueue = Volley.newRequestQueue(this);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
@@ -32,5 +44,8 @@ public class AppClient extends Application {
 
     public static void addRe(JsonObjectRequest jsonObjectRequest) {
         requestQueue.add(jsonObjectRequest);
+    }
+    public static void  addUser(String username){
+        preferences.edit().putString("username",username).apply();
     }
 }

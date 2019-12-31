@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2019_12_13_tiku6</string>
+    <string name="name">login</string>
+    <string name="yhm">name</string>
+    <string name="mima">password</string>
+    <string name="xin">Register a new account</string>
+    <string name="zhaohui">Retrieve password</string>
+    <string name="dengru">Log in to</string>
+</resources>
