@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.android.volley.VolleyError;
 import com.example.a2019_12_13_tiku6.activity.BaseActivity;
 import com.example.a2019_12_13_tiku6.activity.Q_GJCX;
+import com.example.a2019_12_13_tiku6.activity.Q_GRZX;
+import com.example.a2019_12_13_tiku6.activity.Q_LKFX;
 import com.example.a2019_12_13_tiku6.activity.Q_YHZC;
 import com.example.a2019_12_13_tiku6.activity.Z_IPSzActivity;
 import com.example.a2019_12_13_tiku6.activity.Z_TQYBActivity;
@@ -93,6 +95,12 @@ public class MainActivity extends BaseActivity {
                         AppClient.addUser("");
                         AppClient.setOgin(false);
                         finish();
+                        break;
+                    case R.id.grzx:
+                        myClass = Q_GRZX.class;
+                        break;
+                    case R.id.lkfx:
+                        myClass = Q_LKFX.class;
                         break;
                 }
                 startActivity(new Intent(MainActivity.this, myClass));

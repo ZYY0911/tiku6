@@ -55,8 +55,6 @@ public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
         }
         initView();
         setonclick();
-        setSQL();
-        pandaun();
     }
 
     private void pandaun() {
@@ -67,15 +65,15 @@ public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(this, "登入成功", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Q_YHZC.this, MainActivity.class));
                 finish();
-                is = false;
                 return;
-            }
-            if (is == false) {
-                Toast.makeText(this, "登入失败", Toast.LENGTH_SHORT).show();
-
+            }else {
+                is = false;
             }
         }
+        if (is == false) {
+            Toast.makeText(this, "登入失败", Toast.LENGTH_SHORT).show();
 
+        }
     }
 
     private void setSQL() {
@@ -85,7 +83,6 @@ public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
             Log.i("3333333333333333", "用户名: " + sql2.getMima());
             Log.i("3333333333333333", "密码: " + sql2.getYh());
             list.add(new Q_YHZC_bean(sql2.getYh(), sql2.getMima(), sql2.getYx()));
-
         }
 
     }
@@ -124,7 +121,6 @@ public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 if (et_yhm.getText().toString().equals(jsonObject1.getString("username")) && et_mm.getText().toString().equals(jsonObject1.getString("password"))) {
                                     Toast.makeText(Q_YHZC.this, "登入成功", Toast.LENGTH_SHORT).show();
-
                                     AppClient.setOgin(true);
                                     AppClient.addUser(et_yhm.getText().toString());
                                     startActivity(new Intent(Q_YHZC.this, MainActivity.class));
@@ -132,7 +128,6 @@ public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
                                     return;
                                 }
                             }
-                            Toast.makeText(Q_YHZC.this, "登入失败", Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -161,7 +156,20 @@ public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.bt_dr:
                 setVolley();
-                pandaun();
+                List<Q_YHZC_sql> q_yhzc_sqls = LitePal.findAll(Q_YHZC_sql.class);
+                for (int i = 0; i < q_yhzc_sqls.size(); i++) {
+                    Q_YHZC_sql q_yhzc_sql = q_yhzc_sqls.get(i);
+                    if (et_yhm.getText().toString().trim().equals(q_yhzc_sql.getYh())){
+                        if (et_mm.getText().toString().trim().equals(q_yhzc_sql.getMima())){
+                            startActivity(new Intent(this,MainActivity.class));
+                            AppClient.addUser(q_yhzc_sql.getYh());
+                            AppClient.setOgin(true);
+                            finish();
+                            return;
+                        }
+                    }
+                }
+                Toast.makeText(Q_YHZC.this, "登入失败", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

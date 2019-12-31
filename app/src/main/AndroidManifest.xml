@@ -40,7 +40,9 @@
         <activity android:name=".activity.Q_GJCX"></activity>
         <activity android:name=".activity.Q_YHZC_zh" />
         <activity android:name=".activity.Q_YHZC_zc" />
+        <activity android:name=".activity.Q_LKFX"></activity>
         <activity android:name=".activity.Q_YHZC" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

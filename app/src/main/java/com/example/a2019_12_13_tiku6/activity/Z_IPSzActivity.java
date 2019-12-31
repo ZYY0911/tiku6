@@ -73,6 +73,7 @@ public class Z_IPSzActivity extends AppCompatActivity {
                 if (!s.toString().equals("")){
                     if (Integer.parseInt(s.toString())>255&&Integer.parseInt(s.toString())>0){
                         ip1.setText("255");
+                        ip1.setSelection(3);
                         Toast.makeText(Z_IPSzActivity.this, "只能输入1～255", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -80,7 +81,7 @@ public class Z_IPSzActivity extends AppCompatActivity {
         });
     }
 
-    private void add(EditText editText){
+    private void add(final EditText editText){
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -96,7 +97,8 @@ public class Z_IPSzActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (!s.toString().equals("")){
                     if (Integer.parseInt(s.toString())>255){
-                        ip1.setText("255");
+                        editText.setText("255");
+                        editText.setSelection(3);
                         Toast.makeText(Z_IPSzActivity.this, "只能输入0～255", Toast.LENGTH_SHORT).show();
                     }
                 }
