@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true" />
+
+        <LinearLayout
+            android:layout_width="720dp"
+            android:layout_height="90dp"
+            android:background="#ffffff"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="60dp"
+                android:src="@drawable/qd" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="起点："
+                android:textColor="#000"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <Spinner
+                    android:id="@+id/lx_qd"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/dl"></Spinner>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/zd" />
+
+            <TextView
+                android:id="@+id/end"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="终点："
+                android:textColor="#000"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <Spinner
+                    android:id="@+id/lx_zd"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/dl"></Spinner>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lx_ss"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/z_bg_blus"
+                android:gravity="center"
+                android:text="路线"
+                android:textColor="#000"
+                android:textSize="23dp" />
+        </LinearLayout>
+
+
+        <ImageButton
+            android:id="@+id/location"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignRight="@+id/map_view"
+            android:background="@drawable/map_location"
+            android:padding="20dp" />
+
+        <ImageButton
+            android:id="@+id/change_layer"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/location"
+            android:layout_alignRight="@+id/location"
+            android:background="@drawable/map_layer"
+            android:padding="20dp" />
+
+        <ImageButton
+            android:id="@+id/marker"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/change_layer"
+            android:layout_alignRight="@+id/change_layer"
+            android:background="@drawable/map_marker"
+            android:padding="20dp" />
+
+        <ImageButton
+            android:id="@+id/line_distance"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/marker"
+            android:layout_alignRight="@+id/marker"
+            android:background="@drawable/map_line"
+            android:padding="20dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right">
+
+        <TextView
+            android:id="@+id/lx_xq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查看驾车路线详情"
+            android:textColor="#000"
+            android:textSize="30dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/youjiantou" />
+    </LinearLayout>
+</LinearLayout>

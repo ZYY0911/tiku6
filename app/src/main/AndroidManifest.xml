@@ -47,6 +47,11 @@
         </activity>
         <activity android:name=".activity.Z_IPSzActivity"></activity>
         <activity android:name=".activity.Z_TQYBActivity"></activity>
+        <activity android:name=".activity.Z_YHTCActivity"></activity>
+        <activity android:name=".activity.Z_TCCXQActivity"></activity>
+        <activity android:name=".activity.Z_LXDTActivity"></activity>
+        <activity android:name=".activity.Z_XLZNActivity"></activity>
+        <activity android:name=".activity.Z_WDJTActivity"></activity>
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
  */
 public class TQYB_Adapter1 extends ArrayAdapter<Weather> {
     private List<MyData> myData = new ArrayList<>();
-    private String weekarr[] = {"周一","周三", "周四", "周五","周六", "周天", "周二"};
+    private String weekarr[] = {"周天","周一", "周二","周三", "周四", "周五","周六"};
 
     private int layout;
 
@@ -38,7 +38,7 @@ public class TQYB_Adapter1 extends ArrayAdapter<Weather> {
         int day = Integer.parseInt(SimpData.fetData("dd", new Date()));
         Calendar calendar  =Calendar.getInstance();
         calendar.setTime(new Date());
-        int week = calendar.DAY_OF_WEEK-1;
+        int week = calendar.get(Calendar.DAY_OF_WEEK)-1;
         Log.i("aa", "TQYB_Adapter1: "+week);
         int month = Integer.parseInt(SimpData.fetData("MM", new Date()));
         for (int i = 0; i < 6; i++) {
@@ -64,7 +64,7 @@ public class TQYB_Adapter1 extends ArrayAdapter<Weather> {
         ViewHolder holder = new ViewHolder(view);
         holder.itemDay.setText(data.getDat());
         holder.itemWeek.setText(data.getWeek());
-        holder.itemInfo.setText(weather.getInterval());
+        holder.itemInfo.setText(weather.getWeather());
         switch (weather.getWeather()) {
             case "晴":
                 holder.itemImage.setImageResource(R.mipmap.weather);

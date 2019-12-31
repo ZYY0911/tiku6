@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.amap.api.maps.MapView
+                android:id="@+id/map_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/location"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignRight="@+id/map_view"
+                android:padding="20dp"
+                android:background="@drawable/map_location" />
+
+            <ImageButton
+                android:id="@+id/change_layer"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/location"
+                android:layout_alignRight="@+id/location"
+                android:padding="20dp"
+                android:background="@drawable/map_layer" />
+
+            <ImageButton
+                android:id="@+id/marker"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/change_layer"
+                android:layout_alignRight="@+id/change_layer"
+                android:padding="20dp"
+                android:background="@drawable/map_marker" />
+
+            <ImageButton
+                android:id="@+id/line_distance"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/marker"
+                android:layout_alignRight="@+id/marker"
+                android:padding="20dp"
+                android:background="@drawable/map_line" />
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/yhtc_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:visibility="gone"></ListView>
+    </LinearLayout>
+</LinearLayout>

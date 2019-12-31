@@ -10,12 +10,21 @@
             android:title="天气预报" />
 
     </group>
+    <group
+        android:id="@+id/grp2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/park"
+            android:icon="@mipmap/etc_query"
+            android:title="用户停车" />
+
+    </group>
 
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/exit"
-            android:icon="@android:drawable/ic_menu_set_as"
+            android:icon="@drawable/map_layer"
             android:title="退出登录" />
     </group>
 

@@ -7,6 +7,10 @@ import android.preference.PreferenceManager;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.a2019_12_13_tiku6.bean.Duration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Create by 张瀛煜 on 2019-12-31
@@ -14,6 +18,11 @@ import com.android.volley.toolbox.Volley;
 public class AppClient extends Application {
     private static RequestQueue requestQueue;
     private static SharedPreferences preferences;
+    private List<Duration> durations= new ArrayList<>();
+
+    public List<Duration> getDurations() {
+        return durations;
+    }
 
     @Override
     public void onCreate() {

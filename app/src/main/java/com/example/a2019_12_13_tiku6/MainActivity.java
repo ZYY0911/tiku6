@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.example.a2019_12_13_tiku6.activity.BaseActivity;
 import com.example.a2019_12_13_tiku6.activity.Z_IPSzActivity;
 import com.example.a2019_12_13_tiku6.activity.Z_TQYBActivity;
+import com.example.a2019_12_13_tiku6.activity.Z_YHTCActivity;
 import com.example.a2019_12_13_tiku6.bean.Sense;
 import com.example.a2019_12_13_tiku6.net.VolleyLo;
 import com.example.a2019_12_13_tiku6.net.VolleyTo;
@@ -72,6 +73,10 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.weather:
                         myClass = Z_TQYBActivity.class;
+                        finish();
+                        break;
+                    case R.id.park:
+                        myClass = Z_YHTCActivity.class;
                         finish();
                         break;
                 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="dl">
+
+        <item>鼓楼大街</item>
+        <item>北京成林医院</item>
+        <item>景山公园</item>
+        <item>月坛公园</item>
+        <item>四平园小区</item>
+        <item>中国科学院大学</item>
+
+    </string-array>
+</resources>
