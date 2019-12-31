@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.example.a2019_12_13_tiku6.AppClient;
+import com.example.a2019_12_13_tiku6.MainActivity;
 import com.example.a2019_12_13_tiku6.R;
 import com.example.a2019_12_13_tiku6.bean.Q_YHZC_bean;
 import com.example.a2019_12_13_tiku6.bean.Q_YHZC_sql;
@@ -41,8 +42,6 @@ public class Q_YHZC extends BaseActivity implements View.OnClickListener {
     private List<Q_YHZC_bean> list = new ArrayList<>();
     private Q_YHZC_bean bean;
     private boolean is=true;
-    private AppClient appClient= (AppClient) getApplication();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +50,9 @@ public class Q_YHZC extends BaseActivity implements View.OnClickListener {
         setonclick();
         setSQL();
         pandaun();
+        if (AppClient.isAdmin){
+        startActivity(new Intent(Q_YHZC.this, MainActivity.class));
+        }
     }
 
     private void pandaun() {
@@ -114,8 +116,11 @@ public class Q_YHZC extends BaseActivity implements View.OnClickListener {
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 if (et_yhm.getText().toString().equals(jsonObject1.getString("username")) && et_mm.getText().toString().equals(jsonObject1.getString("password"))) {
                                     Toast.makeText(Q_YHZC.this, "登入成功", Toast.LENGTH_SHORT).show();
-                                    AppClient.isAdmin=true;
-                                    AppClient.addUser(et_yhm.getText().toString());
+                                    if (et_yhm.getText().toString().equals("user1")&&et_mm.getText().toString().equals("123456")){
+                                        AppClient.isAdmin=true;
+                                        AppClient.addUser(et_yhm.getText().toString());
+                                    }
+
                                     return;
                                 }
                             }
