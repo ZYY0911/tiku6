@@ -1,11 +1,14 @@
 package com.example.a2019_12_13_tiku6.dialog;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,8 @@ import com.example.a2019_12_13_tiku6.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
+import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
  * Create by 张瀛煜 on 2019-12-31
@@ -46,6 +51,8 @@ public class MyDialog extends DialogFragment {
         rotateAnimation.setDuration(1000);
         rotateAnimation.setRepeatCount(Animation.INFINITE);
         loading.setAnimation(rotateAnimation);
+
+
     }
 
     @Override

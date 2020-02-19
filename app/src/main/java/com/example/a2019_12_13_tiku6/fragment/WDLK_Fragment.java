@@ -89,9 +89,9 @@ public class WDLK_Fragment extends Fragment {
         wdlks1.clear();
         for (int i = 0; i < hlds.size(); i++) {
             HLD hld  =hlds.get(i);
-            wdlks.add(new WDLK(hld.getRed(),hld.getYellow(),hld.getGreen(),hld.getRed(),hld.getYellow(),hld.getGreen(),"红"));
-            wdlks1.add(new WDLK(hld.getRed(),hld.getYellow(),hld.getGreen(),hld.getRed(),hld.getYellow(),hld.getGreen(),"绿"));
-        }
+//            wdlks.add(new WDLK(hld.getRed(),hld.getYellow(),hld.getGreen(),hld.getRed(),hld.getYellow(),hld.getGreen(),"红"));
+//            wdlks1.add(new WDLK(hld.getRed(),hld.getYellow(),hld.getGreen(),hld.getRed(),hld.getYellow(),hld.getGreen(),"绿"));
+      }
 
     }
 

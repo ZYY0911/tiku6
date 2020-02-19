@@ -77,6 +77,17 @@ public class Z_YHTCActivity extends BaseActivity {
         mapView.onCreate(savedInstanceState);
         if (aMap == null) aMap = mapView.getMap();
         setVolley();
+        initClick();
+
+    }
+
+    private void initClick() {
+        aMap.setOnMapClickListener(new AMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                yhtcList.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void setVolley() {

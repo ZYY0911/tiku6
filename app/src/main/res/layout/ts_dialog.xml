@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="270dp"
+    android:orientation="vertical"
+    android:background="#60cccccc"
+    >
+    <ProgressBar
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:indeterminateTint="#fff"
+        />
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="28dp"
+        android:textColor="#fff"
+        android:text="loading..."
+        />
+
+</LinearLayout>

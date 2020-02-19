@@ -4,7 +4,7 @@ package com.example.a2019_12_13_tiku6.bean;
  * Create by 张瀛煜 on 2019-12-31
  */
 
-public class Wdlk {
+public class WDLK {
     String Lk;
     int Lvd;
     int Hud;
@@ -17,10 +17,10 @@ public class Wdlk {
     boolean Sh;
     boolean Qx;
 
-    public Wdlk() {
+    public WDLK() {
     }
 
-    public Wdlk(String lk, int lvd, int hud, int hod, int hvalue, int svalue, String hzt, String szt, boolean he, boolean sh, boolean qx) {
+    public WDLK(String lk, int lvd, int hud, int hod, int hvalue, int svalue, String hzt, String szt, boolean he, boolean sh, boolean qx) {
         Lk = lk;
         Lvd = lvd;
         Hud = hud;

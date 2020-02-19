@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -46,7 +47,7 @@ public class DLHJ_Framgent extends Fragment {
     @BindView(R.id.dl_ts2)
     TextView dlTs2;
     @BindView(R.id.dl_value)
-    TextView dlValue;
+    ProgressBar dlValue;
     @BindView(R.id.dl_value2)
     TextView dlValue2;
     Unbinder unbinder;
@@ -98,6 +99,7 @@ public class DLHJ_Framgent extends Fragment {
                         Gson gson = new Gson();
                         sense = gson.fromJson(jsonObject.toString(), Sense.class);
                         int pm = sense.getPm25();
+                        dlPm.setText("PM2.5当前值："+pm);
                         if (pm > 200) {
                             dlTs.setText("友情提示：PM2.5大于200，不适合出行。");
                             showNotificationView("PM2.5大于200，不适合出行。", 1);
@@ -117,8 +119,9 @@ public class DLHJ_Framgent extends Fragment {
                         } else {
                             dlTs2.setText("友情提示：适合出行");
                         }
-                        dlValue.setPadding((gz / 10), 0, 0, 0);
-                        dlValue2.setPadding(((gz / 10) - 50), 0, 0, 0);
+                        //dlValue.setPadding((gz / 10), 0, 0, 0);
+                        dlValue.setProgress(gz);
+                        dlValue2.setPadding((gz / 6) , 0, 0, 0);
                         dlValue2.setText(gz + "");
                     }
 

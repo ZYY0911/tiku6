@@ -83,7 +83,6 @@ public class Q_LKFX extends AppCompatActivity implements View.OnClickListener {
                 } while (true);
             }
         }).start();
-
     }
 
 //    @Override

@@ -6,9 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.example.a2019_12_13_tiku6.activity.BaseActivity;
@@ -108,6 +110,18 @@ public class MainActivity extends BaseActivity {
                 return true;
             }
         });
+    }
+
+    private long exitTime = 0;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((System.currentTimeMillis()-exitTime)>2000){
+            Toast.makeText(this, "在按一次退出", Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        }else{
+            finish();
+        }
+        return true;
     }
 
     private void setVolley_Bus() {

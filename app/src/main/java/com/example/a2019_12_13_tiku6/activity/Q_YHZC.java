@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,9 +41,6 @@ public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
     private TextView tv_zcxzh;
     private TextView tv_zhmm;
     private Button bt_dr;
-    private List<Q_YHZC_bean> list = new ArrayList<>();
-    private Q_YHZC_bean bean;
-    private boolean is = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,35 +55,18 @@ public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
         setonclick();
     }
 
-    private void pandaun() {
-        for (int i = 0; i < list.size(); i++) {
-            bean = list.get(i);
-            Log.i("222222222222", "onClick: " + list.toString());
-            if (et_yhm.getText().toString().equals(bean.getYh()) && et_mm.getText().toString().equals(bean.getMima())) {
-                Toast.makeText(this, "登入成功", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Q_YHZC.this, MainActivity.class));
-                finish();
-                return;
-            }else {
-                is = false;
-            }
+    private long exitTime = 0;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((System.currentTimeMillis()-exitTime)>2000){
+            Toast.makeText(this, "在按一次退出", Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        }else{
+            finish();
         }
-        if (is == false) {
-            Toast.makeText(this, "登入失败", Toast.LENGTH_SHORT).show();
-
-        }
+        return true;
     }
 
-    private void setSQL() {
-        List<Q_YHZC_sql> litePalSQL2s = LitePal.findAll(Q_YHZC_sql.class);
-        for (Q_YHZC_sql sql2 : litePalSQL2s) {
-            Log.i("3333333333333333", "邮箱: " + sql2.getYx());
-            Log.i("3333333333333333", "用户名: " + sql2.getMima());
-            Log.i("3333333333333333", "密码: " + sql2.getYh());
-            list.add(new Q_YHZC_bean(sql2.getYh(), sql2.getMima(), sql2.getYx()));
-        }
-
-    }
 
     private void setonclick() {
         tv_zcxzh.setOnClickListener(new View.OnClickListener() {
@@ -173,6 +154,4 @@ public class Q_YHZC extends AppCompatActivity implements View.OnClickListener {
                 break;
         }
     }
-
-
 }
